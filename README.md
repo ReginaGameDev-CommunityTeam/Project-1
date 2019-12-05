@@ -1,5 +1,4 @@
-# RDG-CT-1
-ReginaGameDev Community Team Project #1
+# ReginaGameDev Community Team Project #1 - Tomatoes!
 
 The Community Team here in Regina, SK, has spoken! This project is our re-envisioning of the classic game, Worms!
 
