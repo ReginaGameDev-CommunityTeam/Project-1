@@ -1,8 +1,5 @@
-﻿using System;
-using ReginaGameDev.Models;
+﻿using ReginaGameDev.Models;
 using ReginaGameDev.Utilities;
-using UnityEditor.PackageManager;
-using UnityEngine;
 
 namespace ReginaGameDev.Systems
 {
@@ -13,13 +10,7 @@ namespace ReginaGameDev.Systems
 
         public NameGeneratorSystem()
         {
-            try
-            {
-                WordStorage = JsonLoader.LoadJson<RandomWordStorage>(WordsConfigPath);
-            } catch(Exception exception)
-            {
-                Debug.LogError(exception.Message);
-            }
+            WordStorage = JsonLoader.LoadJson<RandomWordStorage>(WordsConfigPath);
         }
 
         public PlayerName GenerateName()
