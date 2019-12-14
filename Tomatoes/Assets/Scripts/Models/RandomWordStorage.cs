@@ -11,11 +11,11 @@ namespace ReginaGameDev.Models
 
         public string GetRandomAdjective()
         {
-            return Adjectives[Random.Range(0, Adjectives.Count - 1)];
+            return Adjectives[Random.Range(0, Adjectives.Count)];
         }
         public string GetRandomNoun()
         {
-            return Nouns[Random.Range(0, Nouns.Count - 1)];
+            return Nouns[Random.Range(0, Nouns.Count)];
         }
     }
 }

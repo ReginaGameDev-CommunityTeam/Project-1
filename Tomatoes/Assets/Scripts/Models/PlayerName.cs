@@ -4,23 +4,13 @@ namespace ReginaGameDev.Models
 {
     public class PlayerName
     {
-        private string FirstName;
-        private string LastName;
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
 
         public PlayerName(string firstName, string lastName)
         {
             this.FirstName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(firstName);
             this.LastName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(lastName);
-        }
-
-        public string GetFirstName()
-        {
-            return FirstName;
-        }
-
-        public string GetLastName()
-        {
-            return LastName;
         }
 
         public string GetFullName()
