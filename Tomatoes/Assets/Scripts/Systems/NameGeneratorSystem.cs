@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using ReginaGameDev.Models;
+﻿using ReginaGameDev.Models;
 using ReginaGameDev.Utilities;
 
 namespace ReginaGameDev.Systems
