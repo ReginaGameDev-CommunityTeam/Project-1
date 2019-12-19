@@ -25,6 +25,10 @@ public class GameHandler : MonoBehaviour
         camFollow.SetCameraFollowPosition(targetTransform.position);
         camFollow.SetCameraFollowObject(targetTransform);
         camFollow.SetCameraZoom(100);
+
+        //Initialize Camera
+        //Initialize Players
+        //Initialize BattleOrder
     }
 
     void HandleManualMovement()
