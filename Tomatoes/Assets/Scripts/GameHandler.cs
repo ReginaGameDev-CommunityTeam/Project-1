@@ -58,24 +58,52 @@ public class GameHandler : MonoBehaviour
 
     void HandleEdgeScrolling()
     {
-        if (Input.mousePosition.x > Screen.width - scrollEdgeSize)
+        Vector2 mousePos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+
+        if (mousePos.x > Screen.width - scrollEdgeSize)
         {
-            CameraFollow.ScrollCamera.Invoke(scrollAmount * Time.deltaTime, 0);
+            float scrollFactor = (CalcScrollFactor(mousePos.x, Screen.width, scrollEdgeSize)) * scrollAmount ;
+            CameraFollow.ScrollCamera.Invoke(scrollFactor * Time.deltaTime, 0);
         }
-        if (Input.mousePosition.x < scrollEdgeSize)
+        if (mousePos.x < scrollEdgeSize)
         {
-            CameraFollow.ScrollCamera.Invoke(-1 * scrollAmount * Time.deltaTime, 0);
+            float scrollFactor = (CalcScrollFactor(mousePos.x, 0, scrollEdgeSize)) * scrollAmount;
+            CameraFollow.ScrollCamera.Invoke(-1 * scrollFactor * Time.deltaTime, 0);
         }
-        if (Input.mousePosition.y > Screen.height - scrollEdgeSize)
+        if (mousePos.y > Screen.height - scrollEdgeSize)
         {
-            CameraFollow.ScrollCamera.Invoke(0, scrollAmount * Time.deltaTime);
+            float scrollFactor = (CalcScrollFactor(mousePos.y, Screen.height, scrollEdgeSize)) * scrollAmount;
+            CameraFollow.ScrollCamera.Invoke(0, scrollFactor * Time.deltaTime);
         }
-        if (Input.mousePosition.y < scrollEdgeSize)
+        if (mousePos.y < scrollEdgeSize)
         {
-            CameraFollow.ScrollCamera.Invoke(0, -1 * scrollAmount * Time.deltaTime);
+            float scrollFactor = (CalcScrollFactor(mousePos.y, 0, scrollEdgeSize)) * scrollAmount;
+            CameraFollow.ScrollCamera.Invoke(0, -1 * scrollFactor * Time.deltaTime);
         }
     }
 
+    float  CalcScrollFactor(float mouse, float edgeValue, float edgeAmount)
+    {
+        float result = 0;        
+        float adjustedMouse;
+        float adjustedEdge;
+
+        if (edgeValue == 0)
+        {
+            adjustedEdge = edgeAmount;
+            adjustedMouse = adjustedEdge - mouse;
+        }
+        else
+        {
+            adjustedEdge = edgeValue - edgeAmount;
+            adjustedMouse = mouse - adjustedEdge;
+            adjustedEdge = edgeAmount;        
+        }
+
+        result = adjustedMouse / adjustedEdge;
+
+        return result;
+    }
     void HandleZoom()
     {
         if (Input.GetKey(KeyCode.KeypadPlus))
